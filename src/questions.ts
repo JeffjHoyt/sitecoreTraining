@@ -9,242 +9,122 @@ export interface Question {
 export const questions: Question[] = [
   {
     id: 1,
-    question: "What is Sitecore XP primarily used for?",
+    question: "A developer is designing a SitecoreAI CMS architecture for a multi-site implementation. What approach ensures scalability?",
     options: [
-      "Database management",
-      "Digital experience and content management",
-      "Network security",
-      "Cloud infrastructure"
+      "Following Sitecore's recommended multi-tenancy setup and implement structured content modeling",
+      "Creating a separate Sitecore instance for each site to avoid complexity",
+      "Disabling user roles to allow unrestricted content access across all sites.",
+      "Storing all website content in a single content repository without structuring site collections"
     ],
-    correctIndex: 1,
-    category: "Core Concepts"
+    correctIndex: 0,
+    category: "Architecture"
   },
   {
     id: 2,
-    question: "Which rendering technology is used in Sitecore's headless architecture?",
+    question: "When setting up a SitecoreAI project, which of the following best describes a structured development workflow?",
     options: [
-      "Web Forms",
-      "MVC only",
-      "JSS (JavaScript Services)",
-      "Razor Pages"
+      "Relying only on manual deployments without automation",
+      "Ignoring branch management strategies and allow all developers to push directly to the main branch",
+      "Deploying changes directly to production without using a version control system",
+      "Using Git for version control, configure CI/CD pipelines, and follow Sitecore development best practices"
     ],
-    correctIndex: 2,
-    category: "Architecture"
+    correctIndex: 3,
+    category: "Development Workflow"
   },
   {
     id: 3,
-    question: "What does Sitecore's 'Experience Editor' allow you to do?",
+    question: "Which factor is most important when designing a SitecoreAI CMS content architecture for a global enterprise?",
     options: [
-      "Edit database schemas",
-      "Edit content inline in a WYSIWYG interface",
-      "Manage server deployments",
-      "Configure network routing"
+      "Implementing a well-structured content tree with localization support",
+      "Avoiding configuring language versions to maintain a single language site",
+      "Storing all content manually in HTML fields to allow unrestricted formatting",
+      "Using a single content structure for all regions to simplify maintenance"
     ],
-    correctIndex: 1,
-    category: "Content Management"
+    correctIndex: 0,
+    category: "Architecture"
   },
   {
     id: 4,
-    question: "What is a Sitecore 'Item'?",
+    question: "What is a key advantage of using SitecoreAI CMS's headless architecture?",
     options: [
-      "A server configuration file",
-      "A CSS stylesheet",
-      "A unit of content stored in the Sitecore tree",
-      "A JavaScript module"
+      "Flexibility in using modern front-end frameworks like Next.js while delivering content efficiently",
+      "Ensuring all components are hardcoded, making content updates more secure",
+      "Reducing the need for structured content modeling",
+      "Requiring that all content is managed within the Sitecore Experience Editor without external APIs"
     ],
-    correctIndex: 2,
-    category: "Core Concepts"
+    correctIndex: 0,
+    category: "Architecture"
   },
   {
     id: 5,
-    question: "Which Sitecore feature enables personalization of content based on visitor behavior?",
+    question: "Which approach should a developer use to ensure a smooth SitecoreAI CMS deployment process?",
     options: [
-      "Content Hub",
-      "Experience Personalization / xDB",
-      "Sitecore Forms",
-      "Sitecore Search"
+      "Skipping testing environments to speed up deployments",
+      "Deploying updates manually to production without using a staging environment",
+      "Using Sitecore Cloud CLI and automate deployment workflows via CI/CD pipelines",
+      "Modifying live content directly in production without version control"
     ],
-    correctIndex: 1,
-    category: "Personalization"
+    correctIndex: 2,
+    category: "Deployment"
   },
   {
     id: 6,
-    question: "What is the Sitecore 'Master' database used for?",
+    question: "When troubleshooting a failed deployment in SitecoreAI, what is the best first step?",
     options: [
-      "Storing analytics data",
-      "Storing published live content only",
-      "Authoring and staging content before publishing",
-      "Caching rendered HTML"
+      "Delete and recreate the environment without diagnosing the issue.",
+      "Rely on user feedback without checking the logs.",
+      "Review the deployment logs in the SitecoreAI Cloud Deploy app.",
+      "Immediately restart the entire Sitecore instance."
     ],
     correctIndex: 2,
-    category: "Architecture"
+    category: "Deployment"
   },
   {
     id: 7,
-    question: "Which Sitecore database serves content to website visitors?",
+    question: "Which method provides the most automated and flexible approach to provisioning new SitecoreAI environments?",
     options: [
-      "Master",
-      "Core",
-      "Web",
-      "Reporting"
+      "Configuring environment settings individually for each developer without automation",
+      "Manually creating each environment through the Sitecore Cloud Portal UI",
+      "Utilizing the Sitecore Cloud CLI or REST API for automated provisioning",
+      "Storing environment configurations within the database and manually update settings"
     ],
     correctIndex: 2,
-    category: "Architecture"
+    category: "Deployment"
   },
   {
     id: 8,
-    question: "What is Sitecore's 'Layout' in the context of rendering?",
+    question: "What is the primary purpose of using environment variables in SitecoreAI deployments?",
     options: [
-      "A CSS file that controls page styles",
-      "A template that defines the outer structure of a page with placeholder slots",
-      "A database schema definition",
-      "A deployment configuration file"
+      "To ensure that every deployment requires manual configuration",
+      "To store API keys publicly for easier developer access",
+      "To define configurations dynamically and avoid hardcoding sensitive data",
+      "To disable security settings for improved performance"
     ],
-    correctIndex: 1,
-    category: "Rendering"
+    correctIndex: 2,
+    category: "Deployment"
   },
   {
     id: 9,
-    question: "What is a Sitecore 'Rendering'?",
+    question: "How should a team manage deployment across multiple SitecoreAI environments to maintain code stability?",
     options: [
-      "A visual component that outputs HTML for part of a page",
-      "A server-side caching rule",
-      "A content import script",
-      "A deployment pipeline step"
+      "Avoid using automated testing and rely on manual verification only.",
+      "Deploy all changes directly to production without a staging phase.",
+      "Allow every developer to push code changes to the live environment manually.",
+      "Use CI/CD pipelines to automate testing and deploy changes incrementally."
     ],
-    correctIndex: 0,
-    category: "Rendering"
+    correctIndex: 3,
+    category: "Deployment"
   },
   {
     id: 10,
-    question: "What does xDB stand for in Sitecore?",
+    question: "When configuring automated deployments for a SitecoreAI project, how can a developer ensure that only tested code is deployed to production?",
     options: [
-      "Extended Database",
-      "Experience Database",
-      "External Data Bridge",
-      "XML Data Builder"
+      "Allow all developers to deploy from feature branches to accelerate iteration speed.",
+      "Use the Sitecore CLI to push untested changes directly to the production environment.",
+      "Configure CI/CD pipelines to deploy only from a protected main branch after successful build and test validation.",
+      "Disable automated pipelines and rely on manual verification for each deployment."
     ],
-    correctIndex: 1,
-    category: "Analytics"
-  },
-  {
-    id: 11,
-    question: "What is a Sitecore 'Template'?",
-    options: [
-      "A pre-built page design",
-      "A definition of fields that Items of that type will have",
-      "A JavaScript component",
-      "A deployment script"
-    ],
-    correctIndex: 1,
-    category: "Core Concepts"
-  },
-  {
-    id: 12,
-    question: "Which Sitecore module handles form creation and data capture?",
-    options: [
-      "Sitecore Flow",
-      "Sitecore Forms",
-      "Sitecore Capture",
-      "Sitecore Input"
-    ],
-    correctIndex: 1,
-    category: "Modules"
-  },
-  {
-    id: 13,
-    question: "What is the role of the Sitecore 'Pipeline'?",
-    options: [
-      "Network data transfer between servers",
-      "A sequence of processors that handle Sitecore requests and events",
-      "A CI/CD deployment tool",
-      "A content import utility"
-    ],
-    correctIndex: 1,
-    category: "Architecture"
-  },
-  {
-    id: 14,
-    question: "What is Sitecore SXA (Sitecore Experience Accelerator)?",
-    options: [
-      "A performance monitoring tool",
-      "A set of reusable components and page designs for faster site building",
-      "A cloud hosting service",
-      "A JavaScript testing framework"
-    ],
-    correctIndex: 1,
-    category: "Modules"
-  },
-  {
-    id: 15,
-    question: "In Sitecore JSS, what does 'disconnected mode' allow developers to do?",
-    options: [
-      "Work without a network connection to the internet",
-      "Develop frontend components without a running Sitecore instance",
-      "Disable user authentication",
-      "Run Sitecore in offline mode for visitors"
-    ],
-    correctIndex: 1,
-    category: "Architecture"
-  },
-  {
-    id: 16,
-    question: "What is a Sitecore 'Placeholder'?",
-    options: [
-      "A default image used when no image is uploaded",
-      "A region in a layout where renderings can be dynamically added",
-      "A draft content item",
-      "A temporary database record"
-    ],
-    correctIndex: 1,
-    category: "Rendering"
-  },
-  {
-    id: 17,
-    question: "Which Sitecore tool is used to manage content workflows?",
-    options: [
-      "Workbox",
-      "Task Manager",
-      "Content Scheduler",
-      "Approval Hub"
-    ],
-    correctIndex: 0,
-    category: "Content Management"
-  },
-  {
-    id: 18,
-    question: "What is Sitecore CDP?",
-    options: [
-      "Content Delivery Pipeline",
-      "Customer Data Platform",
-      "Component Design Panel",
-      "Cloud Deployment Processor"
-    ],
-    correctIndex: 1,
-    category: "Core Concepts"
-  },
-  {
-    id: 19,
-    question: "What does 'publishing' do in Sitecore?",
-    options: [
-      "Exports content to a CSV file",
-      "Moves approved content from the Master database to the Web database",
-      "Deploys the Sitecore application to a server",
-      "Sends email notifications to authors"
-    ],
-    correctIndex: 1,
-    category: "Content Management"
-  },
-  {
-    id: 20,
-    question: "What is Sitecore Personalize?",
-    options: [
-      "A tool for personalizing developer workstations",
-      "A decisioning and experimentation platform for real-time personalization",
-      "A CSS theming engine",
-      "A user authentication service"
-    ],
-    correctIndex: 1,
-    category: "Personalization"
+    correctIndex: 2,
+    category: "Deployment"
   }
 ];
