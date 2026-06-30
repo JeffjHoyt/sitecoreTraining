@@ -20,10 +20,11 @@ export default function QuizScreen({ question, current, total, isLast, onAnswer,
   function handleSelect(idx: number) {
     if (answered) return;
     setSelected(idx);
-    onAnswer(question.id, idx === question.correctIndex);
   }
 
   function handleNext() {
+    if (selected === null) return;
+    onAnswer(question.id, selected === question.correctIndex);
     setSelected(null);
     if (isLast) {
       onEnd();
