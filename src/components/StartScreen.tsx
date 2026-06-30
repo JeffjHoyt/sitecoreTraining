@@ -42,11 +42,13 @@ export default function StartScreen({ questionCount, records, onStart, onReset }
       </button>
 
       {attempted > 0 && (
-        <button className="btn-reset" onClick={() => {
-          if (confirm('Reset all progress? This cannot be undone.')) onReset();
-        }}>
-          Reset Progress
-        </button>
+        <div className="reset-footer">
+          <button className="btn-reset" onClick={() => {
+            if (confirm('Reset all progress? This cannot be undone.')) onReset();
+          }}>
+            Reset Progress
+          </button>
+        </div>
       )}
     </div>
   );
