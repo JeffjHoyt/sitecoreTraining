@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { questions } from './questions';
-import { loadRecords, saveRecords, recordAnswer, shuffleArray } from './store';
+import { loadRecords, saveRecords, recordAnswer, shuffleArray, clearRecords } from './store';
 import type { SessionState, AnswerRecord } from './store';
 import StartScreen from './components/StartScreen';
 import QuizScreen from './components/QuizScreen';
@@ -54,6 +54,11 @@ export default function App() {
     setShowWeakness(false);
   }
 
+  function resetProgress() {
+    clearRecords();
+    setRecords({});
+  }
+
   const currentQuestion = session
     ? questions.find(q => q.id === session.queue[session.currentIndex]) ?? null
     : null;
@@ -81,7 +86,7 @@ export default function App() {
         )}
 
         {!showWeakness && view === 'start' && (
-          <StartScreen questionCount={questions.length} records={records} onStart={startQuiz} />
+          <StartScreen questionCount={questions.length} records={records} onStart={startQuiz} onReset={resetProgress} />
         )}
 
         {!showWeakness && view === 'quiz' && session && currentQuestion && (

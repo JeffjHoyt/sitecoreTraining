@@ -4,9 +4,10 @@ interface Props {
   questionCount: number;
   records: Record<number, AnswerRecord>;
   onStart: () => void;
+  onReset: () => void;
 }
 
-export default function StartScreen({ questionCount, records, onStart }: Props) {
+export default function StartScreen({ questionCount, records, onStart, onReset }: Props) {
   const attempted = Object.keys(records).length;
   const totalCorrect = Object.values(records).reduce((sum, r) => sum + r.correct, 0);
   const totalAttempts = Object.values(records).reduce((sum, r) => sum + r.correct + r.incorrect, 0);
@@ -39,6 +40,14 @@ export default function StartScreen({ questionCount, records, onStart }: Props) 
       <button className="btn-primary" onClick={onStart}>
         Start Quiz
       </button>
+
+      {attempted > 0 && (
+        <button className="btn-reset" onClick={() => {
+          if (confirm('Reset all progress? This cannot be undone.')) onReset();
+        }}>
+          Reset Progress
+        </button>
+      )}
     </div>
   );
 }
