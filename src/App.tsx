@@ -1,20 +1,28 @@
 import { useState } from 'react';
 import { questions } from './questions';
+import { documents } from './documents';
 import { loadRecords, saveRecords, recordAnswer, shuffleArray, clearRecords } from './store';
 import type { SessionState, AnswerRecord } from './store';
 import StartScreen from './components/StartScreen';
 import QuizScreen from './components/QuizScreen';
 import ResultScreen from './components/ResultScreen';
 import WeaknessPanel from './components/WeaknessPanel';
+import DocumentsPanel from './components/DocumentsPanel';
+import HamburgerMenu from './components/HamburgerMenu';
 import './App.css';
 
 type View = 'start' | 'quiz' | 'result';
+type Panel = 'none' | 'weakAreas' | 'documents';
 
 export default function App() {
   const [view, setView] = useState<View>('start');
   const [records, setRecords] = useState<Record<number, AnswerRecord>>(loadRecords);
   const [session, setSession] = useState<SessionState | null>(null);
-  const [showWeakness, setShowWeakness] = useState(false);
+  const [panel, setPanel] = useState<Panel>('none');
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const showWeakness = panel === 'weakAreas';
+  const showDocuments = panel === 'documents';
 
   function startQuiz() {
     const shuffled = shuffleArray(questions.map(q => q.id));
@@ -26,7 +34,7 @@ export default function App() {
       finished: false,
     });
     setView('quiz');
-    setShowWeakness(false);
+    setPanel('none');
   }
 
   function handleAnswer(questionId: number, wasCorrect: boolean) {
@@ -51,7 +59,7 @@ export default function App() {
   function resetAll() {
     setView('start');
     setSession(null);
-    setShowWeakness(false);
+    setPanel('none');
   }
 
   function resetProgress() {
@@ -66,30 +74,37 @@ export default function App() {
   return (
     <div className="app">
       <header className="app-header">
-        <h1 className="app-title">Sitecore Training</h1>
+        <h1 className="app-title" onClick={resetAll} style={{ cursor: 'pointer' }}>Sitecore Training</h1>
         <div className="header-actions">
-          {view !== 'start' && (
+          {panel !== 'none' || view !== 'start' ? (
             <button className="btn-ghost" onClick={resetAll}>← Home</button>
-          )}
-          <button
-            className={`btn-ghost ${showWeakness ? 'active' : ''}`}
-            onClick={() => setShowWeakness(w => !w)}
-          >
-            {showWeakness ? 'Hide Stats' : 'Weak Areas'}
+          ) : null}
+          <button className="hamburger-btn" onClick={() => setMenuOpen(o => !o)} aria-label="Menu">
+            <span /><span /><span />
           </button>
         </div>
       </header>
+
+      <HamburgerMenu
+        isOpen={menuOpen}
+        onClose={() => setMenuOpen(false)}
+        onNavigate={(section) => setPanel(section)}
+      />
 
       <main className="app-main">
         {showWeakness && (
           <WeaknessPanel records={records} questions={questions} />
         )}
 
-        {!showWeakness && view === 'start' && (
+        {showDocuments && (
+          <DocumentsPanel documents={documents} />
+        )}
+
+        {panel === 'none' && view === 'start' && (
           <StartScreen questionCount={questions.length} records={records} onStart={startQuiz} onReset={resetProgress} />
         )}
 
-        {!showWeakness && view === 'quiz' && session && currentQuestion && (
+        {panel === 'none' && view === 'quiz' && session && currentQuestion && (
           <QuizScreen
             question={currentQuestion}
             current={session.currentIndex + 1}
@@ -100,7 +115,7 @@ export default function App() {
           />
         )}
 
-        {!showWeakness && view === 'result' && session && (
+        {panel === 'none' && view === 'result' && session && (
           <ResultScreen
             sessionAnswers={session.sessionAnswers}
             questions={questions}
